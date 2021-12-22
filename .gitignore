@@ -1,0 +1,8 @@
+*.aux
+*.gz
+*.log
+*.mod
+*.o
+
+data/
+gnu_files/temp*
