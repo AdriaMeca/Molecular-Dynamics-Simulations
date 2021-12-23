@@ -84,21 +84,33 @@
 
   As in the previous section, the atoms interact through the Lennard-Jones potential and the simulation is carried out with reduced units. Once finished, we retrive the physical units multiplying the different quantities by an appropriate combination of parameters (Table~\ref{tab:units}).
 
+  \subsection{Results}
+
+  Figure~\ref{fig:liquid} shows the energies and pressure of the system for several density values. As density increases, the space available for the atoms shrinks, they collide more frequently and pressure raises.
   \begin{figure}[htb]
     \centering
     \includegraphics[width=\linewidth]{../figures/liquid_quantities.pdf}
-    \caption{Test.}\label{fig:liquid}
+    \caption{Equilibrium values of the averages of the energies and pressure of the system evaluated with the Velocity Verlet integrator. The error bars come from the block average method.}\label{fig:liquid}
   \end{figure}
 
+  We also study the time evolution of the Mean Square Displacement (MSD) of argon atoms for \(\rho=0.6m/\sigma^{3}\) and \(k_{B}T=2\epsilon\); see Figure~\ref{fig:msd}. We repeat the simulation \(10\) times and we average over the realizations to obtain a more accurate result. Since
+  \[
+    \text{MSD}(t)=\lim_{t\to\infty}6Dt,
+  \]
+  we can calculate the diffusion coefficient~\(D\) with a linear regression:
+  \[
+    D=\frac{a}{6}=9.9743\pm0.0008\,\textup{\AA}^{2}\!/\mathrm{ps},
+  \]
+  where \(a\) is the slope of the regression line.
   \begin{figure}[htb]
     \centering
     \includegraphics[width=\linewidth]{../figures/msd.pdf}
-    \caption{Test.}\label{fig:msd}
+    \caption{Mean Square Displacement as a function of time for a system of \(125\) argon atoms with \(\rho=0.6m/\sigma^{3}\) and \(k_{B}T=2\epsilon\).}\label{fig:msd}
   \end{figure}
 
   \begin{table}[htb]
     \centering
-    \caption{Test.}\label{tab:units}
+    \caption{Combinations of parameters required to retrieve the physical units of different quantities of interest.}\label{tab:units}
     \begin{tabular}{ll}\hline
       Physical quantity & Unit                         \\\hline\hline
       Leght             & \(\sigma\)                   \\
