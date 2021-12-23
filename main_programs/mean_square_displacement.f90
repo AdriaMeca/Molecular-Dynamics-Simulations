@@ -1,3 +1,5 @@
+!Author: Adrià Meca.
+!Extra part of the project.
 program mean_square_displacement
   use mds
 

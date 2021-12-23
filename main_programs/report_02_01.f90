@@ -1,3 +1,5 @@
+!Author: Adrià Meca.
+!First part of the project: Molecular Dynamics Simulations code.
 program report_02_01
   use mds
 

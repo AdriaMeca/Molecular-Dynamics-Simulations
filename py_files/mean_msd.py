@@ -1,3 +1,4 @@
+#Calculation of the mean trajectory of the mean square displacement.
 from os import listdir
 
 import numpy as np

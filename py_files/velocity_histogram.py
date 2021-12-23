@@ -1,3 +1,4 @@
+#Computation of the bins of the velocity histogram.
 import numpy as np
 
 

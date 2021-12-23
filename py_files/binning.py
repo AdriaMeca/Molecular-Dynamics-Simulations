@@ -5,6 +5,9 @@ from scipy.special import expit
 import numpy as np
 
 def binning(old_data, m=[], std=[], p=[0], avg=[0.0]):
+    """
+    Block average method.
+    """
     isize = len(old_data)
     nb = isize // 2
     if nb < 100: return

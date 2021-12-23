@@ -1,3 +1,5 @@
+!Author: Adrià Meca.
+!Second part of the project: Properties of a Lennard-Jones Liquid.
 program report_02_02
   use mds
 
