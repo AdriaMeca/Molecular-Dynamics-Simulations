@@ -33,7 +33,7 @@ set ylabel offset 1.7,0
 set ytics format '%.2f'
 
 #Labels.
-set xlabel '$v^{\alpha}\,(\sqrt{\epsilon/m})$'
+set xlabel '$v_{\alpha}\,(\sqrt{\epsilon/m})$'
 set ylabel 'Normalized number of occurrences'
 
 set multiplot

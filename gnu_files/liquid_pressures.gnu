@@ -8,7 +8,7 @@ nums = '2 4 6 8'
 set offset 2,2,0,0
 
 #Key.
-set key top left
+set key top center out maxrows 1 width 2 samplen 2
 
 #Range.
 set xrange [0:100]

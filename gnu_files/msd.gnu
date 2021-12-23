@@ -31,9 +31,15 @@ set offset 5,5,0,0
 #Legend.
 set key bottom right samplen 2 width -2.5 box
 
+eq = '$\
+\begin{aligned}\
+  f(t)&=(59.846\pm0.005)t+(-2859.7\pm0.7),\\ \
+  r^{2}&=0.995.\
+\end{aligned}\
+$'
+
 #Fit equation.
-set label "$f(x)=(59.846\\pm0.005)x+(-2859.7\\pm0.7)$,\n$r^{2}=0.995$." \
-  at first 5,graph 0.9
+set label eq at first 5,graph 0.85
 
 #Range of the x axis.
 set xrange [0:200]
