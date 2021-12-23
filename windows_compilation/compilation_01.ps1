@@ -15,7 +15,9 @@ foreach ($i in 1..4) {
     $Exe = $Src -replace 'f90', 'exe'
     $Mkf = $Src -replace 'f90', 'mk'
 
+    #Integrator.
     if ($i -lt 3) {$Int = 'Velocity Verlet'} else {$Int = 'Euler'}
+    #Time increment.
     if ($i % 2 -eq 0) {$t = 3} else {$t = 4}
 
     #Temporary Makefile.
