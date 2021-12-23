@@ -3,6 +3,7 @@
 *.log
 *.mod
 *.o
+*.out
 
 data/
 gnu_files/temp*

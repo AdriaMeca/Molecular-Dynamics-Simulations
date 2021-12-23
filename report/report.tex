@@ -93,9 +93,9 @@
     \caption{Equilibrium values of the averages of the energies and pressure of the system evaluated with the Velocity Verlet integrator. The error bars come from the block average method.}\label{fig:liquid}
   \end{figure}
 
-  We also study the time evolution of the Mean Square Displacement (MSD) of argon atoms for \(\rho=0.6m/\sigma^{3}\) and \(k_{B}T=2\epsilon\); see Figure~\ref{fig:msd}. We repeat the simulation \(10\) times and we average over the realizations to obtain a more accurate result. Since
+  We also study the time evolution of the Mean Square Displacement (MSD) of argon atoms for \(\rho=0.6m/\sigma^{3}\) and \(k_{B}T=2\epsilon\) without PBC; see Figure~\ref{fig:msd}. We repeat the simulation \(10\) times and we average over the realizations to obtain a more accurate result. Since
   \[
-    \text{MSD}(t)=\lim_{t\to\infty}6Dt,
+    \text{MSD}(t)=6Dt\qquad(t\to\infty),
   \]
   we can calculate the diffusion coefficient~\(D\) with a linear regression:
   \[
@@ -105,7 +105,7 @@
   \begin{figure}[htb]
     \centering
     \includegraphics[width=\linewidth]{../figures/msd.pdf}
-    \caption{Mean Square Displacement as a function of time for a system of \(125\) argon atoms with \(\rho=0.6m/\sigma^{3}\) and \(k_{B}T=2\epsilon\).}\label{fig:msd}
+    \caption{Mean Square Displacement as a function of time for a system of \(125\) argon atoms with \(\rho=0.6m/\sigma^{3}\) and \(k_{B}T=2\epsilon\) without PBC.}\label{fig:msd}
   \end{figure}
 
   \begin{table}[htb]
@@ -123,4 +123,10 @@
       Temperature       & \(\epsilon/k_{B}\)           \\\hline
     \end{tabular}
   \end{table}
+
+  \begin{thebibliography}{99}
+    \bibitem{Calero} C. Calero, {\em Slides on Molecular Dynamics Simulations}, UB-UPC, 2021.
+    \bibitem{DrMeca} I have created a \href{https://github.com/AdriaMeca/Molecular-Dynamics-Simulations.git}{GitHub repository} that contains the codes I have used to obtain the results.
+  \end{thebibliography}
+
 \end{document}
