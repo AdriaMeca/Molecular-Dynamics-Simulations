@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#Directories.
+main_dir='../main_programs'
+temp_dir='../temp'
+
+#Variables.
+main="${main_dir}/mean_square_displacement.f90"
+makefile="${main_dir}/Makefile"
+
+for i in $(eval echo "{0..4}"); do
+    src="${temp_dir}/temp${i}.f90"
+    exe="${src/f90/exe}"
+    mkf="${src/f90/mk}"
+
+    #Temporary Makefile.
+    sed "s/filename/${src//\//\\/}/" "${makefile}" > "${mkf}"
+
+    #Temporary Main.
+    p1="0,/\(msd_\)[[:digit:]]\+/s//\10${i}/"
+    p2="0,/\(seed = \).*$/s//\1${i}/"
+
+    sed "${p1}; ${p2}" "${main}" > "${src}"
+
+    #Simultaneous execution.
+    gnome-terminal -- bash -c "make -f ${mkf}; ${exe}; rm -f ${temp_dir}/temp${i}*"
+done

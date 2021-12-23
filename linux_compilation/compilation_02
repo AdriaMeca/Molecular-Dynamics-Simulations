@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#Directories.
+main_dir='../main_programs'
+temp_dir='../temp'
+
+#Variables.
+main="${main_dir}/report_02_02.f90"
+makefile="${main_dir}/Makefile"
+
+for i in $(eval echo "{2..8}"); do
+    if (( "${i}" % 2 == 0 )); then
+        src="${temp_dir}/temp${i}.f90"
+        exe="${src/f90/exe}"
+        mkf="${src/f90/mk}"
+
+        #Temporary Makefile.
+        sed "s/filename/${src//\//\\/}/" "${makefile}" > "${mkf}"
+
+        #Temporary Main.
+        p1="0,/\(thermodynamics_02_\)[[:digit:]]\+/s//\10${i}/"
+        p2="0,/\(seed = \).*$/s//\1${i}/"
+        p3="0,/\(rho = \).*$/s//\10.${i}d0/"
+
+        sed "${p1}; ${p2}; ${p3}" "${main}" > "${src}"
+
+        #Simultaneous execution.
+        gnome-terminal -- bash -c "make -f ${mkf}; ${exe}; rm -f ${temp_dir}/temp${i}*"
+    fi
+done

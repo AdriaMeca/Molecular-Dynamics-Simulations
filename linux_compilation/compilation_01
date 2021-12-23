@@ -1,0 +1,43 @@
+#!/bin/bash
+
+#Directories.
+main_dir='../main_programs'
+temp_dir='../temp'
+
+#Variables.
+main="${main_dir}/report_02_01.f90"
+makefile="${main_dir}/Makefile"
+
+for i in $(eval echo "{1..4}"); do
+    src="${temp_dir}/temp${i}.f90"
+    exe="${src/f90/exe}"
+    mkf="${src/f90/mk}"
+
+    #Integrator.
+    if [[ "${i}" < 3 ]]; then
+        int='Velocity Verlet'
+    else
+        int='Euler'
+    fi
+
+    #Time increment.
+    if (( "${i}" % 2 == 0 )); then
+        t=3
+    else
+        t=4
+    fi
+
+    #Temporary Makefile.
+    sed "s/filename/${src//\//\\/}/" "${makefile}" > "${mkf}"
+
+    #Temporary Main.
+    p1="0,/\(thermodynamics_01_\)[[:digit:]]\+/s//\10${i}/"
+    p2="0,/\(seed = \).*$/s//\1${i}/"
+    p3="0,/\(integrator = '\)[[:alpha:][:space:]]\+/s//\1${int}/"
+    p4="0,/\(dt = 1.0d-\)[[:digit:]]/s//\1${t}/"
+
+    sed "${p1}; ${p2}; ${p3}; ${p4}" "${main}" > "${src}"
+
+    #Simultaneous execution.
+    gnome-terminal -- bash -c "make -f ${mkf}; ${exe}; rm -f ${temp_dir}/temp${i}*"
+done
